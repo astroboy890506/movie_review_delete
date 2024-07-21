@@ -43,7 +43,6 @@
 # if __name__ == '__main__':
 #     main()
 #================================================upload file==============================================================
-
 import streamlit as st
 import nltk
 from nltk.tokenize import word_tokenize
@@ -57,7 +56,7 @@ nltk.download('punkt')
 bayes_classifier = load('bayes_classifier.joblib')
 
 # Function to extract features from a movie review
-def review_features(review):
+def review_features(review, top_keys):
     review_words = set(word_tokenize(review))
     features = {}
     for word in top_keys:
@@ -91,7 +90,7 @@ def main():
     if st.button('Predict Sentiment'):
         if review.strip() != '':
             # Classify the review using the loaded classifier
-            features = review_features(review)
+            features = review_features(review, top_keys)
             sentiment = bayes_classifier.classify(features)
             
             # Display prediction
