@@ -1,4 +1,3 @@
-joblib
 nltk
+joblib
 streamlit
-punkt
